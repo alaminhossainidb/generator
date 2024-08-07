@@ -99,6 +99,21 @@
                 width: 16px;
             }
 
+            .themeImg{
+                width: 150px;
+                height: 150px;
+                cursor: pointer;
+            }
+
+            .borderViolet{
+                border: 1px solid #5B3AFF;
+                border-radius: 15px;
+            }
+
+            .cursorPointer{
+                cursor: pointer;
+            }
+
             /* TAB CSS */
             .font14w500Tab{
                 font-size: 14px;
@@ -148,105 +163,133 @@
                 <div class="row">
                     <div class="col-md-7">
                         <div class="bgOffset pr-5" style="border-radius: 10px;">
-                            <div class="p-3">
-                                <p class="font16w500">Title Default</p>
-                                <div class="borderRadius bg-white">
-                                    <p class="pt-2 pb-2 pl-2">word search with images</p>
+                            <!-- START : Worksheet View -->
+                            <div id="worksheetView" style="display: block;">
+                                <div class="p-3">
+                                    <p class="font16w500">Title Default</p>
+                                    <div class="borderRadius bg-white">
+                                        <p class="pt-2 pb-2 pl-2">word search with images</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mt-3 pl-3">
-                                <div class="col-md-7">
-                                    <div class="row ml-2">
-                                        <div class="col-md-6">
-                                            <p class="font16w500">Select Word</p>
+                                <div class="row mt-3 pl-3">
+                                    <div class="col-md-7">
+                                        <div class="row ml-2">
+                                            <div class="col-md-6">
+                                                <p class="font16w500">Select Word</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="d-flex justify-content-end">
+                                                    <select name="type" id="type" class="borderRadius borderGrey font-weight-bold clrPink p-2" onchange="onChangeType()">
+                                                        <option class="font12w400" value="Fruit">Fruit</option>
+                                                        <option class="font12w400" value="Animal">Animal</option>
+                                                        <option class="font12w400" value="Flowers">Flowers</option>
+                                                        <option class="font12w400" value="Country">Country</option>
+                                                    </select>
+                                                    <!-- <div class="dropdown">
+                                                        <button class="btn bg-white dropdown-toggle borderRadius borderGrey font-weight-bold clrPink" type="button" id="select" data-toggle="dropdown" aria-haspopup="true"
+                                                                aria-expanded="false">
+                                                                    Select
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="select">
+                                                            <a class="dropdown-item Disabled" href="#">Select one</a>
+                                                            <a class="dropdown-item" href="#">Action</a>
+                                                            <a class="dropdown-item" href="#">Disabled action</a>
+                                                            <a class="dropdown-item" href="#">AA</a>
+                                                            <a class="dropdown-item" href="#">BB</a>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="d-flex justify-content-end">
-                                                <select name="type" id="type" class="borderRadius borderGrey font-weight-bold clrPink p-2" onchange="onChangeType()">
-                                                    <option class="font12w400" value="Fruit">Fruit</option>
-                                                    <option class="font12w400" value="Animal">Animal</option>
-                                                    <option class="font12w400" value="Flowers">Flowers</option>
-                                                    <option class="font12w400" value="Country">Country</option>
-                                                </select>
-                                                <!-- <div class="dropdown">
-                                                    <button class="btn bg-white dropdown-toggle borderRadius borderGrey font-weight-bold clrPink" type="button" id="select" data-toggle="dropdown" aria-haspopup="true"
-                                                            aria-expanded="false">
-                                                                Select
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="select">
-                                                        <a class="dropdown-item Disabled" href="#">Select one</a>
-                                                        <a class="dropdown-item" href="#">Action</a>
-                                                        <a class="dropdown-item" href="#">Disabled action</a>
-                                                        <a class="dropdown-item" href="#">AA</a>
-                                                        <a class="dropdown-item" href="#">BB</a>
-                                                    </div>
-                                                </div> -->
+                                        <div class="mt-2 h30">
+                                            <div id="typeList" class="ml-3 font14w400">
+                                                <input id="apple" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('apple', 'Apple')"> &nbsp; <span class="font14w400">Apple</span> <br>
+                                                <input id="banana" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('banana', 'Banana')"> &nbsp; <span class="font14w400">Banana</span> <br>
+                                                <input id="cranberry" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('cranberry', 'Cranberry')"> &nbsp; <span class="font14w400">Cranberry</span> <br>
+                                                <input id="blackcurrant" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('blackcurrant', 'Blackcurrant')"> &nbsp; <span class="font14w400">Blackcurrant</span> <br>
+                                                <input id="blueberry" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('blueberry', 'Blueberry')"> &nbsp; <span class="font14w400">Blueberry</span> <br>
+                                                <input id="avocados" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('avocados', 'Avocados')"> &nbsp; <span class="font14w400">Avocados</span> <br>
+                                                <input id="atemoya" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('atemoya', 'Atemoya')"> &nbsp; <span class="font14w400">Atemoya</span> <br>
+                                                <input id="roseApple" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('roseApple', 'Rose apple/Water apple')"> &nbsp; <span class="font14w400">Rose apple/Water apple</span> <br>
+                                                <input id="coconut" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('coconut', 'Coconut')"> &nbsp; <span class="font14w400">Coconut</span> <br>
+                                                <input id="fingerLime" id="apple" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('fingerLime', 'Finger lime')"> &nbsp; <span class="font14w400">Finger lime</span> <br>
+                                                <input id="cherimoya" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('cherimoya', 'Cherimoya')"> &nbsp; <span class="font14w400">Cherimoya</span> <br>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mt-2 h30">
-                                        <div id="typeList" class="ml-3 font14w400">
-                                            <input id="apple" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('apple', 'Apple')"> &nbsp; <span class="font14w400">Apple</span> <br>
-                                            <input id="banana" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('banana', 'Banana')"> &nbsp; <span class="font14w400">Banana</span> <br>
-                                            <input id="cranberry" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('cranberry', 'Cranberry')"> &nbsp; <span class="font14w400">Cranberry</span> <br>
-                                            <input id="blackcurrant" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('blackcurrant', 'Blackcurrant')"> &nbsp; <span class="font14w400">Blackcurrant</span> <br>
-                                            <input id="blueberry" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('blueberry', 'Blueberry')"> &nbsp; <span class="font14w400">Blueberry</span> <br>
-                                            <input id="avocados" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('avocados', 'Avocados')"> &nbsp; <span class="font14w400">Avocados</span> <br>
-                                            <input id="atemoya" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('atemoya', 'Atemoya')"> &nbsp; <span class="font14w400">Atemoya</span> <br>
-                                            <input id="roseApple" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('roseApple', 'Rose apple/Water apple')"> &nbsp; <span class="font14w400">Rose apple/Water apple</span> <br>
-                                            <input id="coconut" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('coconut', 'Coconut')"> &nbsp; <span class="font14w400">Coconut</span> <br>
-                                            <input id="fingerLime" id="apple" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('fingerLime', 'Finger lime')"> &nbsp; <span class="font14w400">Finger lime</span> <br>
-                                            <input id="cherimoya" type="checkbox" class="checkBox mt-3" onchange="onSelectWord('cherimoya', 'Cherimoya')"> &nbsp; <span class="font14w400">Cherimoya</span> <br>
+                                    <div class="col-md-5">
+                                        <p class="font16w500">Written or Selected Words </p>
+                                        <div class="mt-4 h30">
+                                            <div id="selectedWords" class="ml-1 mt-2 font12w400">
+                                                <ul>
+                                                    <li>Use a comma or press enter between words.</li>
+                                                    <li>Minimum word length: 3 letters</li>
+                                                    <li>word length: Maximum20 letters</li>
+                                                    <li>Recommended number of words: 40</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <p class="font16w500">Written or Selected Words </p>
-                                    <div class="mt-4 h30">
-                                        <div id="selectedWords" class="ml-1 mt-2 font12w400">
-                                            <ul>
-                                                <li>Use a comma or press enter between words.</li>
-                                                <li>Minimum word length: 3 letters</li>
-                                                <li>word length: Maximum20 letters</li>
-                                                <li>Recommended number of words: 40</li>
-                                            </ul>
+                                <div class="row pl-3">
+                                    <div class="col-md">
+                                        <p class="font16w500">Number of letters Down</p>
+                                        <div class="borderRadius borderOffPink bg-white d-flex justify-content-around h45">
+                                            <i class="fa fa-minus mt-2" style="color: #F01E76;" aria-hidden="true"></i>
+                                            <p class="mt-2">10</p>
+                                            <i class="fa fa-plus mt-2" style="color: #F01E76;" aria-hidden="true"></i>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row pl-3">
-                                <div class="col-md">
-                                    <p class="font16w500">Number of letters Down</p>
-                                    <div class="borderRadius borderOffPink bg-white d-flex justify-content-around h45">
-                                        <i class="fa fa-minus mt-2" style="color: #F01E76;" aria-hidden="true"></i>
-                                        <p class="mt-2">10</p>
-                                        <i class="fa fa-plus mt-2" style="color: #F01E76;" aria-hidden="true"></i>
+                                    <div class="col-md">
+                                        <p class="font16w500">Number of letters Across</p>
+                                        <div class="borderRadius borderOffPink bg-white d-flex justify-content-around h45">
+                                            <i class="fa fa-minus mt-2" style="color: #F01E76;" aria-hidden="true"></i>
+                                            <p class="mt-2">10</p>
+                                            <i class="fa fa-plus mt-2" style="color: #F01E76;" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p class="font16w500">Letter Case</p>
+                                        <select name="letterCase" id="letterCase" class="borderRadius borderGrey font-weight-bold clrPink p-2">
+                                            <option class="font12w400" value="Uppercase">Uppercase</option>
+                                            <option class="font12w400" value="Lowercase">Lowercase</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-md">
-                                    <p class="font16w500">Number of letters Across</p>
-                                    <div class="borderRadius borderOffPink bg-white d-flex justify-content-around h45">
-                                        <i class="fa fa-minus mt-2" style="color: #F01E76;" aria-hidden="true"></i>
-                                        <p class="mt-2">10</p>
-                                        <i class="fa fa-plus mt-2" style="color: #F01E76;" aria-hidden="true"></i>
+                                <div class="row pl-2 mt-4 mb-5">
+                                    <div class="col-md-6">
+                                        <button class="btn m-2 borderRadius bg-white borderOffPink w-100">Reset</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn m-2 borderRadius bg-white borderOffPink w-100">Generate Worksheet</button>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <p class="font16w500">Letter Case</p>
-                                    <select name="letterCase" id="letterCase" class="borderRadius borderGrey font-weight-bold clrPink p-2">
-                                        <option class="font12w400" value="Uppercase">Uppercase</option>
-                                        <option class="font12w400" value="Lowercase">Lowercase</option>
-                                    </select>
-                                </div>
                             </div>
-                            <div class="row pl-2 mt-4 mb-5">
-                                <div class="col-md-6">
-                                    <button class="btn m-2 borderRadius bg-white borderOffPink w-100">Reset</button>
+                            <!-- END : Worksheet View -->
+                            <!-- START : Theme View -->
+                             <div id="themeView" style="display: none;">
+                                <div class="p-2 row">
+                                    <div class="col-md-4 mt-2" onclick="onSelectTheme('theme1')">
+                                        <img id="theme1" class="themeImg" src="assets/img/24376428.png">
+                                    </div>
+                                    <div class="col-md-4 mt-2" onclick="onSelectTheme('theme2')">
+                                        <img id="theme2" class="themeImg" src="assets/img/24376429.png">
+                                    </div>
+                                    <div class="col-md-4 mt-2" onclick="onSelectTheme('theme3')">
+                                        <img id="theme3" class="themeImg" src="assets/img/24376430.png">
+                                    </div>
+                                    <div class="col-md-4 mt-2" onclick="onSelectTheme('theme4')">
+                                        <img id="theme4" class="themeImg" src="assets/img/24376428.png">
+                                    </div>
+                                    <div class="col-md-4 mt-2" onclick="onSelectTheme('theme5')">
+                                        <img id="theme5" class="themeImg" src="assets/img/24376429.png">
+                                    </div>
+                                    <div class="col-md-4 mt-2" onclick="onSelectTheme('theme6')">
+                                        <img id="theme6" class="themeImg" src="assets/img/24376430.png">
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <button class="btn m-2 borderRadius bg-white borderOffPink w-100">Generate Worksheet</button>
-                                </div>
-                            </div>
+                             </div>
+                            <!-- END : Theme View -->
                         </div>
                     </div>
                     <div class="col-md-5">
@@ -443,29 +486,30 @@
             if(id == 'generator'){
                 document.getElementById('generator').classList.replace('bgInActive', 'bgActive');
                 document.getElementById('theme').classList.replace('bgActive', 'bgInActive');
+                document.getElementById('worksheetView').style.display = 'block';
+                document.getElementById('themeView').style.display = 'none';
             }else{
                 document.getElementById('theme').classList.replace('bgInActive', 'bgActive');
                 document.getElementById('generator').classList.replace('bgActive', 'bgInActive');
+                document.getElementById('worksheetView').style.display = 'none';
+                document.getElementById('themeView').style.display = 'block';
             }
         }
 
+        
+        var animals = ["Cow", "Horse", "Cat", "Elephant", "Tiger", "Dog", "Lion", "Fox", "Goat"]
         function onChangeType(){
-            var animals = ["Cow", "Horse", "Cat", "Elephant", "Tiger", "Dog", "Lion", "Fox", "Goat"]
-            console.log(document.getElementById('type').value)
             var html = '';
-            // "animal'+(animals.indexOf(e)+1)+'", "'+e+'"
 
-            animals.forEach(e => {
-                html += '<input id="animal' + (animals.indexOf(e)+1) + '" type="checkbox" class="checkBox mt-3" onchange="onSelectWord()"> &nbsp; <span class="font14w400">'+ e +'</span> <br>';
+            this.animals.forEach(e => {
+                html += '<input id="animal' + (this.animals.indexOf(e)+1) + '" type="checkbox" class="checkBox mt-3" onchange="onSelectWord(\'animal'+(this.animals.indexOf(e)+1)+'\', \''+e+'\')"> &nbsp; <span class="font14w400">'+ e +'</span> <br>';
             });
-            console.log(html)
 
             document.getElementById('typeList').innerHTML = html;
         }
 
         
         function onSelectWord(id, word){
-            debugger
             var html = '';
 
             if(document.getElementById(id).checked){
@@ -475,10 +519,34 @@
             }
 
             this.selectedWordList.forEach(e => {
-                html += '<p class = "borderRadius borderGrey pl-2 pb-1 pt-1 w-50">'+e+'&nbsp;<i class = "fa fa-angle-right"></i></p>';
+                html += '<p class = "borderRadius borderGrey pl-2 pb-1 pt-1 w-50">'+e+'&nbsp; &nbsp;<i class = "fa fa-x cursorPointer" onclick="onUnSelectWord(\''+e+'\')"></i></p>';
             });
 
             document.getElementById('selectedWords').innerHTML = html;
+        }
+
+        function onUnSelectWord(word){
+            var html = '';
+            
+            this.selectedWordList = this.selectedWordList.filter(e => e != word);
+            
+            this.selectedWordList.forEach(e => {
+                html += '<p class = "borderRadius borderGrey pl-2 pb-1 pt-1 w-50">'+e+'&nbsp; &nbsp;<i class = "fa fa-x cursorPointer" onclick="onUnSelectWord(\''+e+'\')"></i></p>';
+            });
+            document.getElementById('selectedWords').innerHTML = html;
+            document.getElementById('animal'+(this.animals.indexOf(word)+1)).checked = false;
+        }
+
+        function onSelectTheme(id){
+
+            var elementsList = document.getElementsByClassName('themeImg');
+
+            for (let index = 0; index < elementsList.length; index++) {
+                
+                document.getElementById(elementsList[index].id).classList.remove('borderViolet')
+            }
+
+            document.getElementById(id).classList.add('borderViolet');
         }
     </script>
 </html>
