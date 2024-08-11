@@ -80,13 +80,14 @@
                 height: 85%;
                 width: 100%;
                 border-radius: 10px;
-                overflow-x: scroll;
+                overflow-y: scroll;
             }
 
             .h30V2{
                 background-color: white;
                 height: 400px;
                 border-radius: 10px;
+                overflow-y: scroll;
             }
 
             .h45{
@@ -358,7 +359,7 @@
                             <button type="button" class="closeModal" onclick="hideModal('previewModal')">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <div id="modalContent" class="p-1" style = "border: 50px solid transparent; border-image: url(./assets/img/border-image5.png) 25% stretch;">
+                            <div id="modalContent" class="p-1">
                                 
                             </div>
                         </div>
@@ -618,17 +619,45 @@
         }
 
         function onWorksheetPreviewChange(id){
+            var worksheetTRs = document.getElementsByTagName('tr');
 
             if(id == 'worksheet'){
                 document.getElementById('worksheet').classList.replace('bgInActive', 'bgActive');
                 document.getElementById('answerkey').classList.replace('bgActive', 'bgInActive');
-                //document.getElementById('worksheetView').style.display = 'block';
-                //document.getElementById('themeView').style.display = 'none';
+
+                for (let i = 0; i < worksheetTRs.length; i++) {
+                    for (let j = 0; j < worksheetTRs[i].childNodes.length; j++) {
+                        worksheetTRs[i].childNodes[j].style.backgroundColor = '';
+                        worksheetTRs[i].childNodes[j].style.color = '';
+                    }
+                }
+
             }else{
                 document.getElementById('answerkey').classList.replace('bgInActive', 'bgActive');
                 document.getElementById('worksheet').classList.replace('bgActive', 'bgInActive');
-                //document.getElementById('worksheetView').style.display = 'none';
-                //document.getElementById('themeView').style.display = 'block';
+
+                for (let i = 0; i < worksheetTRs.length; i++) {
+
+                    if(i > 5){
+                        break;
+                    }
+
+                    for (let j = 0; j < worksheetTRs[i].childNodes.length; j++) {
+                        if(j == i){
+                            worksheetTRs[i].childNodes[j].style.backgroundColor = 'yellow';
+                        }
+
+                        if(j+2 == i - 1){
+                            worksheetTRs[i].childNodes[j].style.backgroundColor = 'green';
+                        }
+
+                        if(j == 8){
+                            worksheetTRs[i].childNodes[j].style.backgroundColor = 'red';
+                            worksheetTRs[i].childNodes[j].style.color = 'white';
+                        }
+
+                    }
+                }
             }
 
         }
@@ -709,7 +738,11 @@
 
         function preview(id){
             document.getElementById(id).style.display = 'block';
-            generateHtmlForWorksheet('modalContent');
+            
+            var html = document.getElementById('worksheetContent');
+            
+            document.getElementById('modalContent').innerHTML = html.outerHTML;
+            //generateHtmlForWorksheet('modalContent');
         }
 
         function hideModal(id){
